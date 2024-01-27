@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bawo_game/board.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -20,7 +21,9 @@ class _BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Board'),
+      body: Center(
+        child: GameBoard(),
+      ),
     );
   }
 }

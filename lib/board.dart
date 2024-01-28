@@ -10,9 +10,9 @@ class GameBoard extends StatefulWidget {
 }
 
 class _GameBoardState extends State<GameBoard> {
-  Stone stone = Stone(imagePath: 'lib/assets/bawo.png');
+  Stone stone = Stone(imagePath: 'lib/assets/bawo.jpg');
   List<Stone> stones =
-      List.generate(32, (index) => Stone(imagePath: 'lib/assets/bawo.png'));
+      List.generate(32, (index) => Stone(imagePath: 'lib/assets/bawo.jpg'));
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,3 +1,4 @@
+import 'package:bawo_game/bawoStone.dart';
 import 'package:bawo_game/boardRow.dart';
 import 'package:flutter/material.dart';
 import 'package:bawo_game/pit.dart';
@@ -8,16 +9,9 @@ class GameBoard extends StatefulWidget {
 }
 
 class _GameBoardState extends State<GameBoard> {
+  Stone stone = Stone(imagePath: 'lib/assets/bawo.png');
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //     body: Center(
-    //         child: Column(children: [
-    //   BoardRow(),
-    //   BoardRow(),
-    //   BoardRow(),
-    //   BoardRow(),
-    // ])));
     return Scaffold(
         body: Center(
             child: GridView.builder(
@@ -25,7 +19,9 @@ class _GameBoardState extends State<GameBoard> {
       physics: NeverScrollableScrollPhysics(),
       gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 8),
-      itemBuilder: (context, index) => BawoPit(),
+      itemBuilder: (context, index) => BawoPit(
+        stone: stone,
+      ),
     )));
   }
 }

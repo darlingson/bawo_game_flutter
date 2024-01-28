@@ -1,0 +1,9 @@
+Bawo has two versions
+- Authentic version
+- simplified version 
+
+Bawo board has 4 rows, each row has 8 holes/pits 
+64 mables are used when playing bawo 
+each player owns two roles 
+
+a bawo game is lost when there are no mables in their rows or when they can no longer move the marbles 

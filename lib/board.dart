@@ -24,9 +24,7 @@ class _GameBoardState extends State<GameBoard> {
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 8),
-        itemBuilder: (context, index) => BawoPit(
-          stone: stones[index],
-        ),
+        itemBuilder: (context, index) => BawoPit(numberOfStones: 2),
       )),
     );
   }

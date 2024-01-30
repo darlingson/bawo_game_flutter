@@ -1,6 +1,13 @@
+import 'package:bawo_game/logic/game_engine.dart';
 import 'package:flutter/material.dart';
 
 class GameEngineProvider with ChangeNotifier {
+  int currentPlayer = 1;
+  late GameEngine gameEngine;
+
+  GameEngineProvider() {
+    gameEngine = GameEngine(this);
+  }
   List<int> stonesInPits = List.generate(32, (index) => 2);
   void setStonesInPit(int pitIndex, int numberOfStones) {
     // Check if the pitIndex is valid
@@ -29,5 +36,25 @@ class GameEngineProvider with ChangeNotifier {
     } else {
       print('Pit $pitIndex is already empty');
     }
+  }
+
+  // int currentPlayer = 1;
+  // GameEngine gameEngine = GameEngine(this);
+  void switchPlayer() {
+    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+    notifyListeners();
+  }
+
+  void handlePlayerTurn(int tappedPitIndex) {
+    if (currentPlayer == 1) {
+      updateStonesInPit(tappedPitIndex);
+      switchPlayer();
+      gameEngine.makeMove(this);
+    }
+  }
+
+  void makeMoveByEngine(int pitIndex) {
+    updateStonesInPit(pitIndex);
+    switchPlayer();
   }
 }

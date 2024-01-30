@@ -21,4 +21,13 @@ class GameEngineProvider with ChangeNotifier {
       return 0; // Return a default value or handle the error accordingly
     }
   }
+
+  void updateStonesInPit(int pitIndex) {
+    int currentStones = getStonesInPit(pitIndex);
+    if (currentStones > 0) {
+      setStonesInPit(pitIndex, currentStones - 1);
+    } else {
+      print('Pit $pitIndex is already empty');
+    }
+  }
 }

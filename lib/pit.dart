@@ -23,8 +23,8 @@ class BawoPit extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // Add logic to handle the tap, if needed
         print('Pit $pitIndex has been tapped!');
+        gameEngineProvider.updateStonesInPit(pitIndex);
       },
       child: Container(
         decoration: BoxDecoration(

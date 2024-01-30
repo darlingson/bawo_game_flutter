@@ -1,38 +1,35 @@
 import 'package:bawo_game/bawoStone.dart';
+import 'package:bawo_game/logic/game_engine_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class BawoPit extends StatefulWidget {
-  final int numberOfStones;
+class BawoPit extends StatelessWidget {
+  final int pitIndex;
 
   const BawoPit({
     Key? key,
-    required this.numberOfStones,
+    required this.pitIndex,
   }) : super(key: key);
 
   @override
-  _BawoPitState createState() => _BawoPitState();
-}
-
-class _BawoPitState extends State<BawoPit> {
-  bool isTapped = false;
-
-  @override
   Widget build(BuildContext context) {
+    final gameEngineProvider = Provider.of<GameEngineProvider>(context);
+    final int numberOfStones = gameEngineProvider.getStonesInPit(pitIndex);
+
     List<Stone> stones = List.generate(
-      widget.numberOfStones,
+      numberOfStones,
       (index) => Stone(imagePath: 'lib/assets/bawo.jpg'),
     );
 
     return GestureDetector(
       onTap: () {
-        setState(() {
-          isTapped = true;
-        });
+        // Add logic to handle the tap, if needed
+        print('Pit $pitIndex has been tapped!');
       },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(),
-          color: isTapped ? Colors.red : Colors.yellow,
+          color: Colors.yellow,
         ),
         child: GridView.builder(
           itemCount: stones.length,

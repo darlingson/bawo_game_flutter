@@ -31,7 +31,9 @@ class _GameBoardState extends State<GameBoard> {
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 8),
         itemBuilder: (context, index) => GestureDetector(
           onTap: () => handlePitTap(index),
-          child: BawoPit(numberOfStones: 2),
+          child: BawoPit(
+            pitIndex: index,
+          ),
         ),
       )),
     );

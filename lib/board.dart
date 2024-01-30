@@ -13,6 +13,11 @@ class _GameBoardState extends State<GameBoard> {
   Stone stone = Stone(imagePath: 'lib/assets/bawo.jpg');
   List<Stone> stones =
       List.generate(32, (index) => Stone(imagePath: 'lib/assets/bawo.jpg'));
+  void handlePitTap(int index) {
+    // Add your logic here to handle the pit tap
+    print('Pit $index has been clicked!');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +29,10 @@ class _GameBoardState extends State<GameBoard> {
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 8),
-        itemBuilder: (context, index) => BawoPit(numberOfStones: 2),
+        itemBuilder: (context, index) => GestureDetector(
+          onTap: () => handlePitTap(index),
+          child: BawoPit(numberOfStones: 2),
+        ),
       )),
     );
   }

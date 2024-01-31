@@ -39,4 +39,10 @@ class Movement {
     return (relativePrevRow * 8 + relativePrevColumn) >
         (relativeNewRow * 8 + relativeNewColumn);
   }
+
+  bool isMoveLegal(
+      GameEngineProvider provider, int previousIndex, int newIndex) {
+    return !(isMoveClockwise(provider, previousIndex, newIndex) ||
+        isMoveAntiClockwise(provider, previousIndex, newIndex));
+  }
 }

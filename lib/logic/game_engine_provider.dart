@@ -57,4 +57,8 @@ class GameEngineProvider with ChangeNotifier {
     updateStonesInPit(pitIndex);
     switchPlayer();
   }
+
+  int getStartIndex() {
+    return (currentPlayer - 1) * 8;
+  }
 }

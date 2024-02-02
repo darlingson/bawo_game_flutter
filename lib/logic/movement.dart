@@ -2,12 +2,21 @@ import 'package:bawo_game/logic/game_engine_provider.dart';
 
 class Movement {
   bool isMoveClockwise(
-      GameEngineProvider provider, int previousIndex, int newIndex) {
+      GameEngineProvider provider, List<int> moveIndexes, int newIndex) {
+    if (moveIndexes.isEmpty) {
+      // If the array is empty, any move is considered clockwise.
+      return true;
+    }
+
     int realStartIndex = provider.getStartIndex();
     int startRow = realStartIndex ~/ 8;
     int startColumn = realStartIndex % 8;
+
+    // Extracting the last move index from the array
+    int previousIndex = moveIndexes.last;
     int prevRow = previousIndex ~/ 8;
     int prevColumn = previousIndex % 8;
+
     int newRow = newIndex ~/ 8;
     int newColumn = newIndex % 8;
 
@@ -21,13 +30,21 @@ class Movement {
   }
 
   bool isMoveAntiClockwise(
-      GameEngineProvider provider, int previousIndex, int newIndex) {
-    int realStartIndex = provider.getStartIndex();
+      GameEngineProvider provider, List<int> moveIndexes, int newIndex) {
+    if (moveIndexes.isEmpty) {
+      // If the array is empty, any move is considered anti-clockwise.
+      return true;
+    }
 
+    int realStartIndex = provider.getStartIndex();
     int startRow = realStartIndex ~/ 8;
     int startColumn = realStartIndex % 8;
+
+    // Extracting the last move index from the array
+    int previousIndex = moveIndexes.last;
     int prevRow = previousIndex ~/ 8;
     int prevColumn = previousIndex % 8;
+
     int newRow = newIndex ~/ 8;
     int newColumn = newIndex % 8;
 
@@ -42,7 +59,7 @@ class Movement {
 
   bool isMoveLegal(
       GameEngineProvider provider, int previousIndex, int newIndex) {
-    return !(isMoveClockwise(provider, previousIndex, newIndex) ||
-        isMoveAntiClockwise(provider, previousIndex, newIndex));
+    return !(isMoveClockwise(provider, [], newIndex) ||
+        isMoveAntiClockwise(provider, [], newIndex));
   }
 }

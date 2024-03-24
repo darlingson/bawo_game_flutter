@@ -6,7 +6,40 @@ class GameEngineProvider with ChangeNotifier {
   int currentPlayer = 1;
   late GameEngine gameEngine;
   final List<int> moveIndex = [];
-
+  final List<int> pitIndexes = [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ];
   GameEngineProvider() {
     gameEngine = GameEngine(this);
   }

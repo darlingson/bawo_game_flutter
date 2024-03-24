@@ -20,6 +20,10 @@ class GameEngineProvider with ChangeNotifier {
     }
   }
 
+  List<int> getBoardState() {
+    return stonesInPits;
+  }
+
   int getStonesInPit(int pitIndex) {
     // Check if the pitIndex is valid
     if (pitIndex >= 0 && pitIndex < stonesInPits.length) {

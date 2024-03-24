@@ -1,9 +1,11 @@
 import 'package:bawo_game/logic/game_engine.dart';
+import 'package:bawo_game/logic/movement.dart';
 import 'package:flutter/material.dart';
 
 class GameEngineProvider with ChangeNotifier {
   int currentPlayer = 1;
   late GameEngine gameEngine;
+  final List<int> moveIndex = [];
 
   GameEngineProvider() {
     gameEngine = GameEngine(this);
@@ -48,6 +50,14 @@ class GameEngineProvider with ChangeNotifier {
   void handlePlayerTurn(int tappedPitIndex) {
     if (currentPlayer == 1) {
       updateStonesInPit(tappedPitIndex);
+      // Movement movement = Movement();
+      bool isAntiClockwise =
+          Movement().isMoveAntiClockwise(this, moveIndex, tappedPitIndex);
+      bool isClockwise =
+          Movement().isMoveClockwise(this, moveIndex, tappedPitIndex);
+      print("clockwise is $isClockwise" + "anticlockwise is $isAntiClockwise");
+      moveIndex.add(tappedPitIndex);
+      print(moveIndex);
       switchPlayer();
       gameEngine.makeMove(this);
     }

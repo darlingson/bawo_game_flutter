@@ -8,7 +8,8 @@ class Movement {
       return true;
     }
 
-    int realStartIndex = provider.getStartIndex();
+    // int realStartIndex = provider.getStartIndex();
+    int realStartIndex = moveIndexes.first;
     int startRow = realStartIndex ~/ 8;
     int startColumn = realStartIndex % 8;
 
@@ -36,7 +37,7 @@ class Movement {
       return true;
     }
 
-    int realStartIndex = provider.getStartIndex();
+    int realStartIndex = moveIndexes.first;
     int startRow = realStartIndex ~/ 8;
     int startColumn = realStartIndex % 8;
 
@@ -53,7 +54,8 @@ class Movement {
     int relativeNewRow = (newRow - startRow + 4) % 4;
     int relativeNewColumn = (newColumn - startColumn + 8) % 8;
 
-    return (relativePrevRow * 8 + relativePrevColumn) >
+    // Updated condition for anti-clockwise movement
+    return (relativePrevRow * 8 + relativePrevColumn) <
         (relativeNewRow * 8 + relativeNewColumn);
   }
 
